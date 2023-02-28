@@ -1,10 +1,14 @@
 import React from "react";
 import Stock from "./Stock";
 
-function StockContainer({stocks, filterPortfolio}) {
+function StockContainer({stocks, filterPortfolio, type}) {
 
-const displayStocks = 
-  stocks.map((stock) => {
+const displayStocks = stocks.filter((stock) => {
+  if(type === '') {
+    return true
+  }
+  return stock.type === type
+}).map((stock) => {
     return (
       <Stock key={stock.id} stock={stock} filterPortfolio={filterPortfolio}/>
     )
